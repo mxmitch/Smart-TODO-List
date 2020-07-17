@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+
+<head>
+  <!-- Meta Information -->
+  <title>Smart TODO - Home Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+
+  <!-- External Google Fonts Cabin-->
+  <link href="https://fonts.googleapis.com/css?family=Cabin&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap form datePicker-->
+  <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css"
+    rel="stylesheet" />
+
+  <!-- App CSS -->
+  <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/task.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/modal.css" type="text/css" />
+
+  <!-- External JS -->
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+
+  <!-- App JS -->
+  <script DEFER type="text/javascript" src="/scripts/apply_sort.js"></script>
+
+</head>
+
+<body class="all-background">
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="/">
+      <img src="https://raw.githubusercontent.com/fgfl/Smart-TODO-List/master/planning/mockups/smart-todo-logo.png" />
+      <span>Smart To Do</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <p>Hello, username</p>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a id="sort-all" class="nav-link active" href="#">
+            <i class="far fa-check-circle"></i>All <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a id="sort-watch" class="nav-link active" href="#">
+            <i class="fas fa-film"></i>Watch
+          </a>
+        </li>
+        <li class="nav-item">
+          <a id="sort-eat" class="nav-link active" href="#" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-utensils"></i>Eat
+          </a>
+        </li>
+        <li class="nav-item">
+          <a id="sort-read" class="nav-link active" href="#">
+            <i class="fas fa-book-open"></i>Read
+          </a>
+        </li>
+        <li class="nav-item">
+          <a id="sort-buy" class="nav-link active" href="#">
+            <i class="fas fa-cart-arrow-down"></i>Buy
+          </a>
+        </li>
+      </ul>
+
+      <hr>
+
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-tem active">
+          <a id="sort-completed" class="nav-link small-font" href="#">Completed</a>
+        </li>
+        <li class="nav-tem active">
+          <a class="nav-link small-font" href="#">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <main>
+    <h1>My Tasks</h1>
+    <!-- Task List -->
+    <section class="task-list">
+      <script src="scripts/task_element.js"></script>
+    </section>
+
+    <section>
+      <button type="button" id="newTask" class="btn btn-primary close" data-toggle="modal" data-target="#myModal">
+        <i class="fas fa-plus fa-2x"></i>
+      </button>
+
+      <!-- Modal -->
+      <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLabel">Task</h3>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" value="check-completed" id="checkbox"
+                    name="completed">
+                  <label class="form-check-label" for="Completed">Completed</label>
+                </div>
+                <div class="form-group">
+                  <label for="Title">Title</label>
+                  <input type="text" class="form-control" id="title" placeholder="Title" name="task_name">
+                </div>
+                <div class="form-group">
+                  <label for="Category">Category</label>
+                  <select class="form-control" id="category">
+                    <option></option>
+                    <option>buy</option>
+                    <option>watch</option>
+                    <option>eat</option>
+                    <option>read</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Date</label>
+                  <div class="input-group date" data-provide="datepicker">
+                    <input type="text" class="datepicker form-control">
+                    <div class="input-group-addon">
+                      <span class="glyphicon glyphicon-th"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Priority</label>
+                  <select class="form-control" id="priority">
+                    <option>3</option>
+                    <option>2</option>
+                    <option>1</option>
+                    <option>0</option>
+                  </select>
+                </div>
+                <button type="submit" class="btn btn-lg btn-primary">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- Font Awesome-->
+  <script src="https://kit.fontawesome.com/afa696a2f8.js" crossorigin="anonymous"></script>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+  </script>
+
+  <!-- Bootstrap -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+  </script>
+
+  <!-- moment.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+
+  <!-- datePicker -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js">
+  </script>
+
+  <!-- Modal -->
+  <script type="text/javascript" src="/scripts/modal.js"></script>
+</body>
+
+
+</html>

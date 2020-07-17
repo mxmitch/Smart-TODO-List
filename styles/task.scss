@@ -1,0 +1,108 @@
+$SLIDEOUT_TIME: 0.5s;
+$FADE_TIME: 1s;
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  color: #484848;
+  margin-bottom: 250px;
+
+
+  transition: $SLIDEOUT_TIME;
+  transition-timing-function: cubic-bezier(.48, 0, .07, 1);
+
+  &.slideOut {
+    opacity: 0%;
+    transform: translateX(-100%);
+  }
+
+  .task-name {
+    font-size: 1.2em;
+  }
+
+  .task {
+    height: 10%;
+    margin-bottom: 2%;
+    background-color: hsl(0, 0%, 20%);
+    color: #fff;
+    transition: $SLIDEOUT_TIME;
+    transition-timing-function: cubic-bezier(.48, 0, .07, 1);
+
+    &.completed {
+      background-color: hsl(0, 0%, 50%);
+      color: hsl(0, 0%, 30%)
+    }
+
+    &.squash {
+      transform: scale(0);
+    }
+
+    ul {
+      padding: 0;
+    }
+
+    ul li {
+      list-style-type: none;
+      display: inline;
+
+    }
+
+    ul li a {
+      color: #FFF;
+    }
+
+    ul li a:hover {
+      color: #007bff;
+    }
+  }
+
+  .row {
+    padding: 1em;
+
+    .col {
+      padding: 0;
+    }
+  }
+
+  .container.fas {
+    padding: 0.5em;
+  }
+
+  .task-icons {
+    text-align: center;
+
+    i {
+      padding: 0.25em;
+    }
+  }
+}
+
+.red {
+  color: red;
+}
+
+.orange {
+  color: #F2BE22;
+}
+
+.yellow {
+  color: #F2E635;
+}
+
+.gray {
+  color: #848484;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .task-icons {
+    font-size: 1.5em;
+  }
+
+  .task-list .task-name {
+    font-size: 1.5em;
+  }
+}
